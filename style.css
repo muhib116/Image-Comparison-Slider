@@ -1,0 +1,64 @@
+.image_compare {
+  width: 400px;
+  position: relative;
+  user-select: none;
+}
+.image_compare > .controller {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #fff;
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: col-resize;
+}
+
+.image_compare[data-type="y"] > .controller {
+  top: 50%;
+  left: 50%;
+  cursor: row-resize;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.image_compare > .controller::before,
+.image_compare > .controller::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  border: 6px solid;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.image_compare > .controller::before {
+  left: 22%;
+  border-color: transparent #fff transparent transparent;
+}
+
+.image_compare > .controller::after {
+  left: 79%;
+  border-color: transparent transparent transparent #fff;
+}
+
+.image_compare > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image_compare > img:nth-child(1) {
+  position: absolute;
+  top: 0;
+  top: left;
+  clip-path: polygon(0 0, 50% 0%, 50% 100%, 0% 100%);
+}
+
+.image_compare[data-type="y"] > img:nth-child(1) {
+  position: absolute;
+  top: 0;
+  top: left;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
